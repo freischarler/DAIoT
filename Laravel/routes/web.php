@@ -22,12 +22,20 @@ Route::get('/clients', function () {
     //Route::get('/', "PageController@inicio");
 //Route::get('/devices', "PageController@devices");
 
+Route::get('/home', function () {
+    return view('home.index');
+});
+
 Route::get('/dispositivos', function () {
     return view('dispositivos.index');
 });
 
 Route::get('/sensores', function () {
     return view('sensores.index');
+});
+
+Route::get('/ws', function () {
+    return view('ws.index');
 });
 
 Route::get('/log/{id}', function () {

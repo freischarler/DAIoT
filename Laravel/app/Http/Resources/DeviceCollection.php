@@ -19,6 +19,7 @@ class DeviceCollection extends JsonResource
             'serial' => $this->serial,
             'description' => $this->description,
             'is_deleted' => $this->is_deleted,
+            'estado' => $this->estado
         ];
     }
 }

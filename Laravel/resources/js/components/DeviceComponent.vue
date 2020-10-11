@@ -10,21 +10,27 @@
                 <table class="table">
 
                     <tr>
-                        <th width="30%">Id</th>
+                        <th width="10%">Id</th>
                         <th width="30%">Serial</th>
-                        <th width="20%">Description</th>
-                        <th width="5%">Enabled?</th>
+                        <th width="45%">Description</th>
+                        <th width="15%">Acciones</th>
                     </tr>
 
                     <tr v-for="device in devices" :key="device.device_id">
                         <td>{{ device.device_id }}</td>
                         <td>{{ device.serial }}</td>
                         <td>{{ device.description }}</td>
-                        <td><span class="glyphicon glyphicon-trash"></span></td>
+                        <button type="button" class="btn btn-default" aria-label="Right Align">
+                            <router-link :to="'/log/' + device.device_id" class="btn btn-primary nav-link" v-if="device.estado==0">ON</router-link>
+                            <router-link :to="'/log/' + device.device_id" class="btn btn-primary nav-link" v-if="device.estado==1">OFF</router-link>
+
+                            <router-link :to="'/sensores/' + device.device_id +'/edit'" class="glyphicon glyphicon-pencil" aria-hidden="true"></router-link>
+                            <router-link :to="'/sensores/' + device.device_id +'/delete'"  class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></router-link>
+                        </button>
                     </tr>
                 </table>
 
-                <a href="#" class="btn btn-danger btn-block btn-lg active" role="button" aria-pressed="true">EDITAR</a>
+                <a href="#" class="btn btn-secondary btn-block btn-lg active" role="button" aria-pressed="true">Nuevo</a>
 
                 </div>
             </div>

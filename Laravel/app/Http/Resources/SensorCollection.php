@@ -17,6 +17,7 @@ class SensorCollection extends JsonResource
         return [
             'id' => $this->id,
             'serial' => $this->serial,
+            'ubicacion' => $this->ubicacion,
             'temperatura' => $this->temperatura,
             'humedad' => $this->humedad,
             'tiempo' => $this->tiempo,

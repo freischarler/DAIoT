@@ -1,13 +1,15 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Sistema de monitoreo dispositivos IoT</a>
+            <a class="navbar-brand" href="#">Sistema de monitoreo y gestion de dispositivos</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <!--div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul>
-                <router-link tag="li" to="/" exact>
+                
+                <router-link class="nav-item" tag="li" to="/" exact>
                                     <a>Home</a>
                 </router-link>
                 <router-link tag="li" to="/dispositivos">
@@ -15,9 +17,31 @@
                 </router-link>
                 <router-link tag="li" to="/sensores">
                                     <a>Sensores</a>
-                </router-link>              
+                </router-link>
+                                <router-link tag="li" to="/ws">
+                                    <a>Websocket UI</a>
+                </router-link>          
             </ul>
-        </div>
+        </div-->
+
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/dispositivos">Dispositivos <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/sensores">Sensores <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/ws">WebSocket<span class="sr-only">(current)</span></a>
+        </li>
+
+    </ul>
+
+  </div>
         </nav>
     <router-view></router-view>
     <div class="container">
@@ -26,7 +50,7 @@
                     <hr>
 
                     <footer>
-                        <p>© 2018 Rimorsoft Online.</p>
+                        <p>© 2020 DAIoT.</p>
                     </footer>
                 </div>
             </div>

@@ -29,7 +29,8 @@ Route::apiResource('client', ClientController::class);
 //Route::apiResource('sensor', 'SensorController@index');
 //Route::apiResource('dispositivos', 'DeviceController@index');
 
-
+Route::post('sensor','SensorController@store');
+Route::put('sensor/{id}','SensorController@editSensor');
 Route::apiResource('sensor', SensorController::class);
 
 Route::apiResource('dispositivos', DeviceController::class);

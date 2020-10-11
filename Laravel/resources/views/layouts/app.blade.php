@@ -31,6 +31,12 @@
     <!-- <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+              <!-- Chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+
+
     @yield('header')
 </head>
 <body id="page-top">
