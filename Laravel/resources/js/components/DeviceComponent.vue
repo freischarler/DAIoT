@@ -16,21 +16,21 @@
                         <th width="15%">Acciones</th>
                     </tr>
 
-                    <tr v-for="device in devices" :key="device.device_id">
-                        <td>{{ device.device_id }}</td>
+                    <tr v-for="device in devices" :key="device.id">
+                        <td>{{ device.id }}</td>
                         <td>{{ device.serial }}</td>
                         <td>{{ device.description }}</td>
                         <button type="button" class="btn btn-default" aria-label="Right Align">
-                            <router-link :to="'/log/' + device.device_id" class="btn btn-primary nav-link" v-if="device.estado==0">ON</router-link>
-                            <router-link :to="'/log/' + device.device_id" class="btn btn-primary nav-link" v-if="device.estado==1">OFF</router-link>
+                            <router-link :to="'/log/' + device.id" class="btn btn-primary nav-link" style="width:75px; background-color: #469e65" v-if="device.estado==0">ON</router-link>
+                            <router-link :to="'/log/' + device.id" class="btn btn-primary nav-link" style="width:75px; background-color: #e07169" v-if="device.estado==1">OFF</router-link>
 
-                            <router-link :to="'/sensores/' + device.device_id +'/edit'" class="glyphicon glyphicon-pencil" aria-hidden="true"></router-link>
-                            <router-link :to="'/sensores/' + device.device_id +'/delete'"  class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></router-link>
+                            <router-link :to="'/dispositivos/' + device.id +'/edit'" class="glyphicon glyphicon-pencil" aria-hidden="true"></router-link>
+                            <router-link :to="'/dispositivos/' + device.id +'/delete'"  class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></router-link>
                         </button>
                     </tr>
                 </table>
-
-                <a href="#" class="btn btn-secondary btn-block btn-lg active" role="button" aria-pressed="true">Nuevo</a>
+                <router-link :to="'/dispositivos/add'" class="btn btn-secondary btn-block btn-lg active" role="button" aria-pressed="true">Nuevo</router-link>
+                
 
                 </div>
             </div>

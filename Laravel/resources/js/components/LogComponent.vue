@@ -100,8 +100,37 @@
       :height="150"
       />
 
+  <!--div>
+    <div class="overflow-auto">
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+    ></b-pagination>
+
+    <p class="mt-3">Current Page: {{ currentPage }}</p>
+
+    <b-table
+      id="my-table"
+      :sensores="sensores"
+      :per-page="perPage"
+      :current-page="currentPage"
+      small
+      ></b-table>
+    </div>
+
+  </div-->
+    
     <div class="row justify-content-center">
+        
+
         <div class="col-md-10">
+
+          <p style="padding-top: 20px; padding-bottom:20px">
+            <a href="javascript:history.go(-1)" class="btn btn-primary  btn-block btn-lg active" role="button" aria-pressed="true">REGRESAR</a>
+          </p>
+
             <div class="card">
                 <div class="card-header">Log List</div>
                 
@@ -125,9 +154,12 @@
                     </tr>
                 </table>
 
-                <a href="javascript:history.go(-1)" class="btn btn-primary  btn-block btn-lg active" role="button" aria-pressed="true">REGRESAR</a>
+                
                 </div>
             </div>
+
+            
+
         </div>
     </div>
   </div>
@@ -146,7 +178,8 @@ export default {
     chartData: null,
     chartDataH: null,
     sensores: [],
-
+    perPage: 20,
+    currentPage: 1,
   }),
     async mounted () {
         this.loaded = false;
@@ -165,6 +198,11 @@ export default {
         .catch(error => {
           console.log(error)
       })
+    },
+    computed: {
+      rows() {
+        return this.sensores.length
+      }
     }
   }
 </script>

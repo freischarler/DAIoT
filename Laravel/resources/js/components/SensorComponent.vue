@@ -20,13 +20,14 @@
                     </tr>
 
                     <tr v-for="sensor in sensores" :key="sensor.id">
+                        
                         <td>{{ sensor.serial }}</td>
                         <td>{{ sensor.ubicacion }}</td>
                         <td>{{ sensor.temperatura }}</td>
                         <td>{{ sensor.humedad }}</td>
                         <td>{{ sensor.tiempo }}</td>
                         <button type="button" class="btn btn-default" aria-label="Left Align">
-                            <router-link :to="'/log/' + sensor.id" class="btn btn-primary nav-link" >Ver Log</router-link>
+                            <router-link :to="'/log/' + sensor.id" class="btn btn-primary nav-link" >Ver mas</router-link>
                             <router-link :to="'/sensores/' + sensor.id +'/edit'" class="glyphicon glyphicon-pencil" aria-hidden="true"></router-link>
                             <router-link :to="'/sensores/' + sensor.id +'/delete'"  class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></router-link>
                         </button>

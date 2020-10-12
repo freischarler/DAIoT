@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Sensor;
 use App\Http\Resources\SensorCollection as SensorCollectionResource;
 
 use App\Log;
 use App\Http\Resources\Sensor as SensorResource;
-use Illuminate\Support\Facades\Validator;
+
 
 
 class SensorController extends Controller
@@ -21,9 +24,14 @@ class SensorController extends Controller
      */
     public function index()
     {
-        //
-        $sensor = Sensor::all();
-    
+        $sensor= Sensor::select()
+        ->where('is_deleted', '=', 0)
+        ->get();
+        //$sensor = Sensor::all();
+        //$sensor = Sensor::where('is_deleted','0';
+        //$sensor = Sensor::table('sensors')->where('is_deleted',0)->get();
+        $value=0;
+        //$sensor = Sensor::where('is_deleted',0);
         return SensorCollectionResource::collection($sensor);
     }
 
@@ -45,20 +53,32 @@ class SensorController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor= new sensor;
-        $sensor->id=NULL;
-        $sensor->serial=$request->input('serial');
-        $sensor->ubicacion=$request->input('ubicacion');
-        $sensor->temperatura=0;
-        $sensor->humedad=0;
-        $sensor->tiempo=NULL;
-        $sensor->is_deleted=0;
-        $sensor->save();
+        echo "Request: " . $request->content;
+        $input=$request->all();
+        $validator=Validator::make($input,[
+            'serial'=>'required',
+            'ubicacion'=>'required'
+        ]);
 
-        if($sensor->save()){
-            return new SensorCollectionResource($sensor);
+        if($validator->fails()){
+            return $this->sendError('Validation Error',$validator->errors());
         }
-        return null;
+
+        try{
+            $sensor = new Sensor;
+            $sensor->serial = $request->input('serial');
+            $sensor->ubicacion = $request->input('ubicacion');
+            $sensor->is_deleted=0;
+            $sensor->id=NULL;
+            $sensor->temperatura=NULL;
+            $sensor->humedad=NULL;
+
+            $sensor->save();
+            return ("Insert successfully");
+        }
+        catch(Exception $e){
+            return ("operation failed");
+        }
     }
 
     /**
@@ -95,6 +115,16 @@ class SensorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $input=$request->all();
+        $validator=Validator::make($input,[
+            'serial'=>'required',
+            'ubicacion'=>'required'
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error',$validator->errors());
+        }
+
         $sensor = Sensor::where('id',$id)->get();
         
         $sensor->serial = $request->serial;
@@ -111,10 +141,15 @@ class SensorController extends Controller
      */
     public function destroy($id)
     {
-        $sensor = Sensor::where('id', $id)->get();
-        $sensor->delete();
-   
-        return 'Client deleted successfully.';
+        $sensor = Sensor::findOrFail($id);
+        try{
+            $sensor->is_deleted = 1;
+            $sensor->save();
+            return ("Insert successfully");
+        }
+        catch(Exception $e){
+            return ("operation failed");
+        }
     }
 
     public function editSensor(Request $request)

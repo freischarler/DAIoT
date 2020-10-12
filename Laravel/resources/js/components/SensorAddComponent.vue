@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+      <div class="row justify-content-center">
       <form @submit.prevent="onSubmit($event)">
         <div class="form-group">
             <label for="sensor_serial">Nombre</label>
@@ -10,13 +11,16 @@
             <input id="sensor_ubicacion" v-model="sensor.ubicacion" />
         </div>
         <div class="form-group">
-            <button type="submit">UPDATE</button>
+            <button class="btn btn-danger  btn-block btn-lg active" type="submit">AGREGAR</button>
             <a href="javascript:history.go(-1)" class="btn btn-primary  btn-block btn-lg active" role="button" aria-pressed="true">REGRESAR</a>
         </div>
     </form>
+    </div>
   </div>
 </template>
 <script>
+import router from '../router'
+
 export default {
   data() {
     return {
@@ -33,10 +37,10 @@ export default {
         serial: this.sensor.serial,
         ubicacion: this.sensor.ubicacion,
         }).then((response) => {
-        console.log(response.json());
+        console.log(response);
         this.message = 'User updated';
         setTimeout(() => this.message = null, 2000);
-        //this.sensor = response.data.data;
+        router.push({ path: '/sensores' })
         }).catch(error => {
             console.log(error)
     }) }

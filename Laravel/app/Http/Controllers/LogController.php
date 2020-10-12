@@ -52,9 +52,10 @@ class LogController extends Controller
      */
     public function show($id)
     {
-
-        
-        $log = Log::where('id', $id)->get();
+        //$log=Log::all();
+        $log = Log::where('id', $id)->paginate(50);
+        //$log = $this->log->orderBy('tiempo', 'DESC')->get();
+        //$log = $log::orderBy('tiempo', 'DESC');
         return LogResource::collection($log);
     }
 

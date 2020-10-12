@@ -3,10 +3,15 @@ import Router from 'vue-router'
 
 import HomeComponent    from './components/HomeComponent.vue'
 import DeviceComponent from './components/DeviceComponent.vue';
+import DeviceAddComponent from './components/DeviceAddComponent.vue';
+import DeviceEditComponent from './components/DeviceEditComponent.vue';
+import DeviceDeleteComponent from './components/DeviceDeleteComponent.vue';
+
 import SensorComponent from './components/SensorComponent.vue';
 import LogComponent from './components/LogComponent.vue';
 import SensorEditComponent from './components/SensorEditComponent.vue';
-import SensorNuevoComponent from './components/SensorAddComponent.vue';
+import SensorDeleteComponent from './components/SensorDeleteComponent.vue';
+import SensorAddComponent from './components/SensorAddComponent.vue';
 import WSComponent from './components/WSComponent.vue';
 
 Vue.use(Router)
@@ -26,6 +31,18 @@ export default new Router({
             component: DeviceComponent
         },
         {
+            path: '/dispositivos/:id/edit',
+            component: DeviceEditComponent
+        },
+        {
+            path: '/dispositivos/:id/delete',
+            component: DeviceDeleteComponent
+        },
+        {
+            path: '/dispositivos/add',
+            component: DeviceAddComponent
+        },
+        {
             path: '/sensores',
             component: SensorComponent
         },
@@ -34,8 +51,12 @@ export default new Router({
             component: SensorEditComponent
         },
         {
+            path: '/sensores/:id/delete',
+            component: SensorDeleteComponent
+        },
+        {
             path: '/sensores/add',
-            component: SensorNuevoComponent
+            component: SensorAddComponent
         },
         {
             path: '/log/:id',

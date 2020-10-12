@@ -15,7 +15,7 @@ class DeviceCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'device_id' => $this->device_id,
+            'id' => $this->id,
             'serial' => $this->serial,
             'description' => $this->description,
             'is_deleted' => $this->is_deleted,

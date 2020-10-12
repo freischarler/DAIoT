@@ -30,11 +30,15 @@ Route::apiResource('client', ClientController::class);
 //Route::apiResource('dispositivos', 'DeviceController@index');
 
 Route::post('sensor','SensorController@store');
+Route::post('sensor/delete/{id}','SensorController@destroy');
 Route::put('sensor/{id}','SensorController@editSensor');
 Route::apiResource('sensor', SensorController::class);
 
+Route::post('dispositivo','DeviceController@store');
+Route::post('dispositivo/delete/{id}','DeviceController@destroy');
+Route::put('dispositivo/{id}','DeviceController@editDevice');
 Route::apiResource('dispositivos', DeviceController::class);
-//Route::get('sensorlog', 'LogController@index');
+
 
 Route::get('log', 'LogController@index');
 Route::get('log/{dispositivo}', 'LogController@show');

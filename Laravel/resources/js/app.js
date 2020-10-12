@@ -3,8 +3,12 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueMqtt from 'vue-mqtt'
 import App from './components/App'
-
 import router from './router'
+
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+
 
 import DeviceComponent from './components/DeviceComponent.vue';
 import SensorComponent from './components/SensorComponent.vue';
@@ -16,7 +20,10 @@ Vue.use(VueMqtt, 'ws://192.168.0.232:9001', {clientId: 'WebClient-' + parseInt(M
 Vue.config.productionTip = false
 Vue.config.productionTip = false
 
-
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 Vue.component('device-component', DeviceComponent);
 Vue.component('sensor-component', SensorComponent);
