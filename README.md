@@ -11,7 +11,7 @@ La rama Laravel contiene todo lo necesario para correr la aplicacion.
 
 # Clonar la aplicación
 ```sh
-git clone https://github.com/freischarler/DAM-TP
+git clone https://github.com/freischarler/DAIoT
 ```
 
 # Requisitos
